@@ -48,6 +48,18 @@ export default function Calculator() {
         setFirstValue('');
     }
 
+    function handlePlusMinusSignToggle() {
+        if (displayValue === '0' || displayValue === '') {
+            return;
+        }
+
+        if (displayValue.startsWith('-')) {
+            setDisplayValue(displayValue.substring(1));
+        } else {
+            setDisplayValue(`-${displayValue}`);
+        }
+    };
+
     function handleAllClear() {
         setDisplayValue('0')
         setOperator('');
@@ -72,7 +84,7 @@ export default function Calculator() {
                     displayValue === '0' ? <Button text={'AC'} color={'btnPrimary'} onPress={handleAllClear} />
                         : <Button text="⌫" color={'btnPrimary'} onPress={handleDelete} />
                 }
-                <Button text={'+/-'} color={'btnPrimary'} />
+                <Button text={'+/-'} color={'btnPrimary'} onPress={handlePlusMinusSignToggle} />
                 <Button text={'%'} color={'btnPrimary'} onPress={() => handleOperatorInput('%')} />
                 <Button text={'÷'} color={'btnOperator'} onPress={() => handleOperatorInput('÷')} />
 
