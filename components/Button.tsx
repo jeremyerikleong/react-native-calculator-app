@@ -2,12 +2,12 @@ import { COLORS, SIZES } from '@/constants/Theme';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function Button({ text, color }: { text: string, color: "btnPrimary" | "btnSecondary" | "btnOperator" }) {
+export default function Button({ text, color, onPress }: { text: string, color: "btnPrimary" | "btnSecondary" | "btnOperator", onPress: Function }) {
     return (
         <TouchableOpacity
             style={[styles.btn,
             { backgroundColor: color === 'btnPrimary' ? COLORS.btnPrimary : color === 'btnSecondary' ? COLORS.btnSecondary : COLORS.btnOperator }]}
-            onPress={() => { }}>
+            onPress={onPress}>
             <Text style={styles.btnText}>{text}</Text>
         </TouchableOpacity>
     )
